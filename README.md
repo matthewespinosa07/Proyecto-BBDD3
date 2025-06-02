@@ -55,7 +55,7 @@ proyecto_futbol/
 # 🔧 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/proyecto_futbol.git
+copiar el link del proyecto
 cd proyecto_futbol
 ```
 
