@@ -1,0 +1,3 @@
+echo "Flask\nrequests\npython-dotenv\npsycopg2" > requirements.txt
+git add requirements.txt
+git commit -m "Dependencias necesarias para la API"
