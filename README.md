@@ -90,9 +90,88 @@ Visita `http://localhost:5000/` para ver la API en acción.
 
 Desde `visual.py` puedes generar gráficos como:
 
-- Posesión por equipo
-- Comparativa de goles
-- xG por partido
+- 📈 Posesión por equipo
+- ⚽ Comparativa de goles por fecha
+- 📊 xG por partido
+- 🟨 Tarjetas amarillas y rojas por equipo
+
+---
+
+## 👥 Usuarios del Sistema
+
+| Rol                  | Permisos principales                                                   |
+|----------------------|------------------------------------------------------------------------|
+| Administrador        | Acceso completo: scripts, API, BD                                      |
+| Analista Deportivo   | Consultas avanzadas, filtros por ligas, descarga de gráficos           |
+| Tester               | Validación de integridad, pruebas de endpoints                         |
+| Usuario Final        | Solo lectura de métricas y visualizaciones                             |
+| Docente Evaluador    | Acceso a documentación, revisión de funcionalidad                      |
+
+---
+
+## 🗂 Diagramas y Documentación
+
+- Modelo Entidad-Relación (ERD)
+- BPMN del flujo de datos
+- Diagrama de Clases
+- Diagrama de Despliegue
+- WBS del proyecto
+
+Todos están disponibles en el directorio `img/` o dentro del informe técnico.
+
+---
+
+## 🔌 Integración con API externa
+
+Se implementó un módulo llamado `api_service.py` encargado de conectarse a la API pública de football-data.org. A través de este componente se automatiza la descarga de datos relacionados con competiciones, equipos, jugadores y resultados. Se garantiza que las llamadas se realicen con autenticación y manejo de errores básicos.
+
+---
+
+## 🗃️ Estructura y carga de la base de datos
+
+La base de datos está construida en PostgreSQL, estructurada con SQLAlchemy. Se definieron modelos para equipos, partidos, estadísticas por equipo y por partido. Además, se creó un script inicial `init_db.py` que permite cargar datos históricos base automáticamente desde la API.
+
+---
+
+## 🔐 Seguridad básica con token de acceso
+
+Para proteger los endpoints, se agregó un middleware que valida la presencia y validez de un token antes de aceptar peticiones. El token se gestiona a través del archivo `.env`, evitando exposición directa del API key.
+
+---
+
+## 📈 Visualización de tarjetas por equipo
+
+Se implementó una visualización que permite analizar la cantidad de tarjetas amarillas y rojas por equipo. Esta métrica está disponible en formato gráfico de barras y puede filtrarse por liga o temporada, permitiendo un análisis disciplinario.
+
+---
+
+## 🌐 Endpoint de partidos con filtros
+
+Se desarrolló el endpoint `/matches` que acepta parámetros como fecha, nombre del equipo o competencia. Esto facilita a los usuarios consultar partidos específicos según el criterio deseado.
+
+---
+
+## 📦 Dockerización del entorno
+
+Se configuró el archivo `Dockerfile` para contenedores y `docker-compose.yml` para levantar simultáneamente el backend y la base de datos PostgreSQL en entornos locales o de producción. Esto simplifica la instalación del sistema.
+
+---
+
+## 📄 Documentación con Swagger
+
+Gracias al uso de `flasgger`, se implementó una documentación visual accesible desde el navegador. Esta interfaz facilita la prueba y comprensión de todos los endpoints expuestos por la API.
+
+---
+
+## 🧪 Pruebas unitarias básicas
+
+Se agregaron pruebas para verificar la conectividad de la API, la correcta inserción de datos y el comportamiento del sistema ante errores comunes. Estas pruebas están escritas usando `unittest` y `pytest`.
+
+---
+
+## 🧹 Limpieza y normalización de datos
+
+Antes de guardar la información extraída, se normalizan nombres, formatos de fecha y estructuras de estadísticas. Esto asegura la integridad de los datos almacenados y facilita futuras consultas y análisis.
 
 ---
 
