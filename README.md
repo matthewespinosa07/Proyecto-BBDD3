@@ -231,14 +231,6 @@ Se desarrolló asegurando compatibilidad con los estándares ya definidos dentro
 
 ---
 
-### ⭐ Modelo dimensional en estrella
-
-> Basado en la API de fútbol **football-data.org**, se construyó un modelo dimensional en estrella enfocado en el análisis de partidos.
-
-![image](https://github.com/user-attachments/assets/e57bcbce-c692-469f-94ef-a6130bf7bbae)
-
----
-
 ### 🎯 Patrón de diseño: Factory Method
 
 El patrón Factory Method es un patrón creacional que permite crear objetos sin especificar la clase exacta del objeto que se va a crear. En lugar de instanciar clases directamente con new o Clase(), se delega la creación a una “fábrica” que encapsula esa lógica. Esto permite mayor flexibilidad y escalabilidad.
@@ -551,9 +543,6 @@ Se implementaron los 5 patrones de diseño aplicados al dominio de fútbol y an�
 ## Aplicación de los patrones de diseño en el proyecto
 ![image](https://github.com/user-attachments/assets/e338b87c-df4c-4fa1-9325-977ad2554a87)
 
-## Modelo EDR normalizado 
-![image](https://github.com/user-attachments/assets/9f4695f9-e354-44ff-9d78-fa7ad124c68a)
-
 ### 🔧 Configura la documentación interactiva con Swagger.
 
 Configura la documentación interactiva con Swagger. implementado de acuerdo a la estructura técnica definida en fases anteriores.  
@@ -666,10 +655,12 @@ Se desarrolló asegurando compatibilidad con los estándares ya definidos dentro
 
 ### 🔧 Agrega diagrama entidad-relación (ERD).
 
-Agrega diagrama entidad-relación (ERD). implementado de acuerdo a la estructura técnica definida en fases anteriores.  
+Diagrama entidad-relación (ERD). implementado de acuerdo a la estructura técnica definida en fases anteriores.  
+
+![image](https://github.com/user-attachments/assets/9f4695f9-e354-44ff-9d78-fa7ad124c68a)
 
 
-### 📊 Describe en README el modelo dimensional en estrella.
+### 📊 Describe el modelo dimensional en estrella.
 
 | Tarea                     | Detalle                                   |
 |---------------------------|-------------------------------------------|
@@ -731,10 +722,12 @@ Agrega endpoint para estadísticas globales. implementado de acuerdo a la estruc
 - Se integró con otros módulos existentes  
 - Se verificó que el comportamiento fuera coherente con la arquitectura esperada  
 
-### 🧱 Agrega imagen del diagrama de modelo estrella.
+### ⭐ Modelo dimensional en estrella
 
-Este cambio representa un avance en la consolidación de la funcionalidad agrega imagen del diagrama de modelo estrella..  
-Se desarrolló asegurando compatibilidad con los estándares ya definidos dentro del sistema.
+> Basado en la API de fútbol **football-data.org**, se construyó un modelo dimensional en estrella enfocado en el análisis de partidos.
+> Se desarrolló asegurando compatibilidad con los estándares ya definidos dentro del sistema.
+
+![image](https://github.com/user-attachments/assets/e57bcbce-c692-469f-94ef-a6130bf7bbae)
 
 ### 🔍 Incorpora imagen resumen de patrones de diseño aplicados.
 
