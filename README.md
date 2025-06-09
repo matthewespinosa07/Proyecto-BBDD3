@@ -619,6 +619,140 @@ Consolida patrones de diseño en la arquitectura general. implementado de acuerd
 | Módulo afectado           | Backend/API/Visualizaciones               |
 | Documentación vinculada   | Incluida en el README                     |
 
+### 🌐 Agrega interfaz HTML para mostrar partidos
+
+Se ha añadido el archivo `index.html` que presenta una interfaz visual para consultar partidos en formato tabla.
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Partidos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      margin: 0 auto;
+      width: 90%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Listado de Partidos de Fútbol</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Equipo Local</th>
+        <th>Equipo Visitante</th>
+        <th>Goles Local</th>
+        <th>Goles Visitante</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-body"></tbody>
+  </table>
+
+  <script>
+    fetch('/partidos')
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById('tabla-body');
+        if (data.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6">No hay datos disponibles</td></tr>';
+        } else {
+          data.forEach(p => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+              <td>${p.id}</td>
+              <td>${p.fecha}</td>
+              <td>${p.equipo_local}</td>
+              <td>${p.equipo_visitante}</td>
+              <td>${p.goles_local}</td>
+              <td>${p.goles_visitante}</td>
+            `;
+            tbody.appendChild(fila);
+          });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('tabla-body').innerHTML =
+          '<tr><td colspan="6" style="color:red;">Error al cargar los datos</td></tr>';
+      });
+  </script>
+</body>
+</html>
+```
+
+![image](https://github.com/user-attachments/assets/102dd56d-aaf3-4b87-81d6-1e9e800d7d63)
+
+---
+
+### 🖥️ Agrega backend en Flask para servir datos desde CSV
+
+Se ha incorporado un pequeño servidor backend en Flask que expone un endpoint `/partidos` para servir los datos del archivo `partidos.csv` como JSON.
+
+```python
+from flask import Flask, jsonify
+import pandas as pd
+
+app = Flask(__name__)
+
+# Ruta para leer el CSV y devolver datos JSON
+@app.route('/partidos')
+def partidos():
+    try:
+        # Leer archivo CSV (asegúrate que la ruta sea correcta)
+        df = pd.read_csv('partidos.csv')
+
+        # Reemplazar NaN por None para evitar errores en JSON
+        df = df.where(pd.notnull(df), None)
+
+        # Convertir DataFrame a lista de diccionarios para jsonify
+        datos = df.to_dict(orient='records')
+
+        return jsonify(datos)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8000)
+```
+
+✅ Este backend permite que `index.html` obtenga dinámicamente los datos de los partidos para su visualización en tabla.
+
 ### 🐛 Construye clases API para partidos y equipos.
 
 - Se creó el componente relacionado a: **construye clases api para partidos y equipos.**  
