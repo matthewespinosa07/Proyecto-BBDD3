@@ -552,7 +552,7 @@ Se implementaron los 5 patrones de diseño aplicados al dominio de fútbol y an�
 ![image](https://github.com/user-attachments/assets/e338b87c-df4c-4fa1-9325-977ad2554a87)
 
 ## Modelo EDR normalizado 
-![image](https://github.com/user-attachments/assets/089fe134-803b-4112-9518-281d8b0714b7)
+![image](https://github.com/user-attachments/assets/9f4695f9-e354-44ff-9d78-fa7ad124c68a)
 
 ### 🔧 Configura la documentación interactiva con Swagger.
 
